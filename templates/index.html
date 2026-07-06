@@ -2,6 +2,126 @@
 <html>
 <head>
     <title>Spam Detector</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Georgia, serif;
+            color: #e8e8e8;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 560px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            color: #555;
+            text-transform: uppercase;
+            font-family: sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #e8e8e8;
+            margin-bottom: 0.4rem;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #555;
+            font-family: sans-serif;
+            margin-bottom: 2rem;
+        }
+
+        textarea {
+            width: 100%;
+            background: #0d0d0d;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 1rem;
+            color: #ccc;
+            font-size: 14px;
+            font-family: sans-serif;
+            resize: none;
+            outline: none;
+            box-shadow: 0 0 40px 8px rgba(160, 120, 255, 0.2), 0 0 80px 16px rgba(100, 80, 200, 0.1);
+            transition: box-shadow 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        textarea:focus {
+            box-shadow: 0 0 60px 12px rgba(160, 120, 255, 0.35), 0 0 120px 24px rgba(100, 80, 200, 0.18);
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #1a1025;
+            border: 1px solid #5a3f8a;
+            border-radius: 8px;
+            color: #c4a8ff;
+            font-size: 14px;
+            font-family: sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            letter-spacing: 0.06em;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 24px 4px rgba(160, 120, 255, 0.2);
+            transition: box-shadow 0.2s;
+        }
+
+        button:hover {
+            box-shadow: 0 0 32px 6px rgba(160, 120, 255, 0.35);
+        }
+
+        .result-box {
+            background: #0d0d0d;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 0 20px 4px rgba(160, 120, 255, 0.08);
+        }
+
+        .result-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #888;
+            flex-shrink: 0;
+        }
+
+        .result-text {
+            font-size: 14px;
+            color: #888;
+            font-family: sans-serif;
+        }
+
+        .accuracy {
+            font-size: 11px;
+            color: #333;
+            font-family: sans-serif;
+            margin-top: 1.5rem;
+        }
+    </style>
     <script>
     function checkspam() {
         const message = document.getElementById("message").value;
@@ -19,12 +139,18 @@
     </script>
 </head>
 <body>
-<h1>Spam Detector</h1>
-<p>Paste a message below to check if it's spam or not.</p>
-<textarea id="message" rows="5" cols="50"></textarea>
-<br>
-<button onclick="checkspam()">Check</button>
-<br>
-<p id="result"></p>
+    <div class="container">
+        <p class="label">AI-powered</p>
+        <h1>Spam Detector</h1>
+        <p class="subtitle">Paste a message to check if it's spam or not</p>
+        <textarea id="message" rows="5" placeholder="Paste your message here..."></textarea>
+        <button onclick="checkSpam()">Check message</button>
+        <div class="result-box">
+            <span class="result-dot" id="dot"></span>
+            <span class="result-text" id="result">Result will appear here</span>
+        </div>
+        <p class="accuracy">97.94% accuracy on test data</p>
+    </div>
+</body>
 </body>
 </html>
